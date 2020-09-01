@@ -1,0 +1,66 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns:suite="sap.suite.ui.commons"
+	xmlns:l="sap.ui.layout">
+	
+	<Panel id="streetAddressPanel" backgroundDesign="Transparent">
+		<f:SimpleForm editable="true" adjustLabelSpan="false" layout="ResponsiveGridLayout" backgroundDesign="Solid"
+			width="auto" columnsM="12" columnsL="12" columnsXL="12" emptySpanXL="0" emptySpanL="0" emptySpanM="0" labelSpanL="4" labelSpanS="4"
+			labelSpanM="4" labelSpanXL="4" maxContainerCols="12" height="100%">
+			<f:toolbar>
+				<Toolbar>
+					<Title text="Street Address"/>
+				</Toolbar>
+			</f:toolbar>
+			<f:content>
+				<Label id="countryLabel" text="{i18n>lblCountry}" labelFor="country" required="{viewModel>/state/editable}"/>
+				<ComboBox id="country"
+					enabled="{viewModel>/state/editable}"
+					selectedKey="{viewModel>country}"
+					items="{path: 'countries>/', sorter: { path: 'name' } }"
+					selectionChange="onCountryChange">
+					<core:Item text="{countries>name}" key="{countries>key}"/>
+				</ComboBox>
+				
+				<Label id="streetLabel" text="{i18n>lblStreet}" labelFor="street" required="{viewModel>/state/editable}"/>
+				<Input id="street" maxLength="30" value="{viewModel>street}" editable="{viewModel>/state/editable}"/>
+				
+				<Label id="cityLabel" text="{i18n>lblCity}" labelFor="city" required="{viewModel>/state/editable}"/>
+				<Input id="city" value="{viewModel>city}" editable="{viewModel>/state/editable}"/>
+				
+				<Label
+					id="regionLabel"
+					text="{i18n>lblRegion}"
+					required="{
+						parts: ['viewModel>country', 'viewModel>/state/editable', 'regions>/'],
+						formatter: '.formatters.regionRequired'
+					}"
+					labelFor="region"/>
+				<ComboBox
+					id="region"
+					enabled="{
+						parts: ['viewModel>country', 'viewModel>/state/editable'],
+						formatter: '.formatters.countryDependentFieldEnabled'
+					}"
+					selectedKey="{viewModel>region}">
+				</ComboBox>
+				
+				<Label id="lblPostcode" text="{i18n>lblPostcode}" labelFor="postcode" required="{viewModel>/state/editable}"/>
+				<Input id="postcode" value="{viewModel>postcode}" editable="{viewModel>/state/editable}"/>
+				
+				<Label id="transportationZoneLabel" text="{i18n>lblTransportationZone}" labelFor="transportationZone" required="{viewModel>/state/editable}"/>
+				<ComboBox id="transportationZone"
+					enabled="{
+						parts: ['viewModel>country', 'viewModel>/state/editable'],
+						formatter: '.formatters.countryDependentFieldEnabled'
+					}"
+					selectedKey="{viewModel>transportationZone}">
+				</ComboBox>
+			</f:content>
+		</f:SimpleForm>
+	</Panel>
+</core:FragmentDefinition>

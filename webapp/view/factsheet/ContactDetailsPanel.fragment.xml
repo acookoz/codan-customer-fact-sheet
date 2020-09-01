@@ -1,0 +1,33 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns:suite="sap.suite.ui.commons"
+	xmlns:l="sap.ui.layout">
+
+	<Panel id="contactDetailsPanel" backgroundDesign="Transparent">
+		<f:SimpleForm editable="true" adjustLabelSpan="false" id="modifyContactDetails" layout="ResponsiveGridLayout" backgroundDesign="Solid"
+			width="auto" columnsM="12" columnsL="12" columnsXL="12" emptySpanXL="0" emptySpanL="0" emptySpanM="0" labelSpanL="4" labelSpanS="4"
+			labelSpanM="4" labelSpanXL="4" maxContainerCols="12" height="100%">
+			<f:toolbar>
+				<Toolbar>
+					<Title text="Contact Details"/>
+				</Toolbar>
+			</f:toolbar>
+			<f:content>
+				<Label id="telephoneLabel" text="{i18n>lblTelephone}" labelFor="contactTelephone" required="{viewModel>/state/editable}"/>
+				<Input id="telephone" value="{viewModel>telephone}" editable="{viewModel>/state/editable}"/>
+				<Label id="emailLabel" text="{i18n>lblEmail}" labelFor="email" required="{viewModel>/state/editable}"/>
+				<Input id="email" value="{viewModel>email}" editable="{viewModel>/state/editable}"/>
+				<Label id="contactNameLabel" text="{i18n>lblContactName}" labelFor="contactName" required="{viewModel>/state/editable}"/>
+				<Input id="contactName" value="{viewModel>contactName}" editable="{viewModel>/state/editable}"/>
+				<Label id="contactNameTelephoneLabel" text="{i18n>lblContactNameTelephone}" labelFor="contactNameTelephone" required="{viewModel>/state/editable}"/>
+				<Input id="contactNameTelephone" value="{viewModel>contactNameTelephone}" editable="{viewModel>/state/editable}"/>
+				<Label id="contactNameEmailLabel" text="{i18n>lblContactNameEmail}" labelFor="contactNameEmail" required="{viewModel>/state/editable}"/>
+				<Input id="contactNameEmail" value="{viewModel>contactNameEmail}" editable="{viewModel>/state/editable}"/>
+			</f:content>
+			</f:SimpleForm>
+				</Panel>
+</core:FragmentDefinition>

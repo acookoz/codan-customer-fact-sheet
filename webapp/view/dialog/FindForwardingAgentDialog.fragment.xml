@@ -1,0 +1,29 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:form="sap.ui.layout.form">
+	<Dialog
+		title="Find Forwarding Agent">
+		<beginButton>
+			<Button
+				text="{i18n>btnCancel}"
+				press="closeDialog"/>
+		</beginButton>
+		
+		<SearchField
+			width="90%"
+			class="sapUiSmallMargin"
+			value="{viewModel>/search/forwardingAgent}"
+			liveChange="clearSearchResults"
+			search="search"/>
+		
+		<List
+			id="forwardingAgentSearchResults"
+			type="None"
+			mode="SingleSelectMaster"
+			visible="false"
+			selectionChange="onSelection"
+			busyIndicatorDelay="0">
+		</List>
+	</Dialog>
+</core:FragmentDefinition>

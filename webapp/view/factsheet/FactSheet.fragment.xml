@@ -1,0 +1,62 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns:suite="sap.suite.ui.commons"
+	xmlns:l="sap.ui.layout">
+	<!--TODO READD UPLOAD CONTROL-->
+	<!--xmlns:codan="req.customer.codan.control"-->
+	
+	<VBox binding="{viewModel>/state/request}"
+		id="factSheet"
+		busy="{viewModel>/state/busy}"
+		busyIndicatorDelay="0">
+		<ObjectHeader title="{viewModel>name1} ({viewModel>customerId})" condensed="true" id="factSheetObjectHeader" backgroundDesign="Transparent"
+			visible="{= !!${viewModel>customerId} &amp;&amp; !${viewModel>/state/hideCustomerHeader} }"/>
+		<MessageStrip
+			text="{i18n>newExplainText}"
+			visible="{
+				parts: ['viewModel>customerId', 'viewModel>status'],
+				formatter: '.formatters.newExplainTextVisible'
+			}"
+			type="Information"
+			showIcon="true"/>
+		<HBox width="100%">
+			<VBox width="50%" height="100%">
+				<core:Fragment fragmentName="factsheet.req.customer.codan.view.factsheet.BasicDetailPanel" type="XML" />
+			</VBox>
+			<VBox width="50%" height="100%">
+				<core:Fragment fragmentName="factsheet.req.customer.codan.view.factsheet.ContactDetailsPanel" type="XML" />
+			</VBox>
+		</HBox>
+		<HBox width="100%">
+			<VBox width="50%" height="100%">
+				<core:Fragment fragmentName="factsheet.req.customer.codan.view.factsheet.StreetAddressPanel" type="XML" />
+			</VBox>
+			<VBox width="50%" height="100%">
+				<core:Fragment fragmentName="factsheet.req.customer.codan.view.factsheet.PostalAddressPanel" type="XML" />
+			</VBox>
+		</HBox>
+		<HBox width="100%">
+			<VBox width="50%" height="100%">
+				<core:Fragment fragmentName="factsheet.req.customer.codan.view.factsheet.SalesBillingPanel" type="XML" />
+			</VBox>
+			<VBox width="50%" height="100%">
+				<core:Fragment fragmentName="factsheet.req.customer.codan.view.factsheet.ShippingPanel" type="XML" />
+				<core:Fragment fragmentName="factsheet.req.customer.codan.view.factsheet.PartnersPanel" type="XML" />
+			</VBox>
+		</HBox>
+		<!--<Panel>-->
+		<!--	<codan:UploadCollection width="100%" id="attachments" visible="{viewModel>/state/editable}" multiple="false" items="{ToAttachments}"-->
+		<!--		maximumFilenameLength="0" maximumFileSize="0" change="changeAttachment" fileDeleted="deleteAttachment" uploadComplete="uploadComplete"-->
+		<!--		noDataText="{i18n>txtNoAttachments}" uploadEnabled="true" busy="{detailView>/attachmentsBusy}" suppressUpload="{= !${id} }" fakeUploadPress="showSaveConfirmation">-->
+		<!--		<codan:items>-->
+		<!--			<UploadCollectionItem contributor="{createdByName}" documentId="{attachmentId}" fileName="{fileName}" fileSize="{fileSize}"-->
+		<!--				mimeType="{mimeType}" visibleEdit="false" url="/sap/opu/odata/sap/z_customer_req_srv/Attachments('{attachmentId}')/$value"/>-->
+		<!--		</codan:items>-->
+		<!--	</codan:UploadCollection>-->
+		<!--</Panel>-->
+	</VBox>
+</core:FragmentDefinition>

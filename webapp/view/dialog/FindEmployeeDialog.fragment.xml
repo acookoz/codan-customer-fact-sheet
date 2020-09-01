@@ -1,0 +1,29 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:form="sap.ui.layout.form">
+	<Dialog
+		 title="Find Employee">
+		<beginButton>
+			<Button
+				text="{i18n>btnCancel}"
+				press="closeDialog"/>
+		</beginButton>
+		
+		<SearchField
+			id="employeeSearchField"
+			width="90%"
+			class="sapUiSmallMargin"
+			liveChange="clearSearchResults"
+			search="search"/>
+		
+		<List
+			id="employeeSearchResults"
+			type="None"
+			mode="SingleSelectMaster"
+			visible="false"
+			selectionChange="onSelection"
+			busyIndicatorDelay="0">
+		</List>
+	</Dialog>
+</core:FragmentDefinition>

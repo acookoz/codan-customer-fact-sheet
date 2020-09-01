@@ -1,0 +1,48 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns:suite="sap.suite.ui.commons"
+	xmlns:l="sap.ui.layout">
+	
+	<Panel id="postalAddressPanel" backgroundDesign="Transparent">
+		<f:SimpleForm editable="true" adjustLabelSpan="false" layout="ResponsiveGridLayout" backgroundDesign="Solid"
+			width="auto" columnsM="12" columnsL="12" columnsXL="12" emptySpanXL="0" emptySpanL="0" emptySpanM="0" labelSpanL="4" labelSpanS="4"
+			labelSpanM="4" labelSpanXL="4" maxContainerCols="12" height="100%">
+			<f:toolbar>
+				<Toolbar>
+					<Title text="Postal Address"/>
+				</Toolbar>
+			</f:toolbar>
+			<f:content>
+				<Label id="poSpacerLabel1" labelFor="poSpacer1"/>
+				<Input id="poSpacer1" editable="false"/>
+				<Label id="poBoxLabel" text="{i18n>lblPoBox}" labelFor="poBox"/>
+				<Input id="poBox" maxLength="10" value="{viewModel>poBox}" editable="{viewModel>/state/editable}"/>
+				<Label id="poBoxCityLabel" text="{i18n>poBoxCity}" labelFor="poBoxCity"/>
+				<Input id="poBoxCity" maxLength="40" value="{viewModel>poBoxCity}" editable="{viewModel>/state/editable}"/>
+				
+				<Label
+					id="poBoxRegionLabel"
+					text="{i18n>lblRegion}"
+					labelFor="poBoxRegion"/>
+				<Select
+					id="poBoxRegion"
+					enabled="{
+						parts: ['viewModel>country', 'viewModel>/state/editable'],
+						formatter: '.formatters.countryDependentFieldEnabled'
+					}"
+					selectedKey="{viewModel>poBoxRegion}"
+					forceSelection="false">
+				</Select>
+				
+				<Label id="poBoxPostcodeLabel" text="{i18n>lblPostcode}" labelFor="poBoxPostcode"/>
+				<Input id="poBoxPostcode" value="{viewModel>poBoxPostcode}" editable="{viewModel>/state/editable}"/>
+				<Label id="poSpacerLabel2" labelFor="poSpacer2"/>
+				<Input id="poSpacer2" editable="false"/>
+			</f:content>
+		</f:SimpleForm>
+	</Panel>
+</core:FragmentDefinition>

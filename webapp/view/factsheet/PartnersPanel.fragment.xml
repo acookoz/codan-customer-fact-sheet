@@ -1,0 +1,90 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns:suite="sap.suite.ui.commons"
+	xmlns:l="sap.ui.layout">
+	
+	<Panel id="partnersPanel" backgroundDesign="Transparent">
+		<f:SimpleForm editable="true" adjustLabelSpan="false" id="modifyPartners" layout="ResponsiveGridLayout" backgroundDesign="Solid"
+			width="auto" columnsM="12" columnsL="12" columnsXL="12" emptySpanXL="0" emptySpanL="0" emptySpanM="0" labelSpanL="4" labelSpanS="4"
+			labelSpanM="4" labelSpanXL="4" maxContainerCols="12" height="100%">
+			<f:toolbar>
+				<Toolbar>
+					<Title text="Partners"/>
+				</Toolbar>
+			</f:toolbar>
+			<f:content>
+				<Label id="forwardingAgentLabel" text="{i18n>lblForwardingAgent}" labelFor="forwardingAgent"/>
+				<Input id="forwardingAgent" value="{viewModel>forwardingAgentName}" enabled="false">
+					<layoutData>
+						<l:GridData span="L7 M7 S7"/>
+					</layoutData>
+				</Input>
+				<Button
+					type="{
+						path: 'viewModel>forwardingAgentName',
+						formatter: '.formatters.findOrChangeButtonType'
+					}"
+					icon="{
+						path: 'viewModel>forwardingAgentName',
+						formatter: '.formatters.findOrChangeButtonIcon'
+					}"
+					tooltip="Find /change"
+					enabled="{viewModel>/state/editable}" 
+					press="findForwardingAgent"></Button>
+					
+				<Label id="salesEmployeeLabel"
+					text="{i18n>lblSalesEmployee}"
+					required="{viewModel>/state/editable}"
+					labelFor="salesEmployee"/>
+				<Input id="salesEmployee"
+					value="{viewModel>salesEmployeeName}"
+					enabled="false">
+					<layoutData>
+						<l:GridData span="L7 M7 S7"/>
+					</layoutData>
+				</Input>
+				<Button 
+					type="{
+						path: 'viewModel>salesEmployeeName',
+						formatter: '.formatters.findOrChangeButtonType'
+					}"
+					icon="{
+						path: 'viewModel>salesEmployeeName',
+						formatter: '.formatters.findOrChangeButtonIcon'
+					}"
+					tooltip="Find /change"
+					enabled="{viewModel>/state/editable}" 
+					press="findSalesEmployee"></Button>
+					
+				<Label id="salesAdministratorLabel"
+					text="{i18n>lblSalesAdministrator}"
+					required="{viewModel>/state/editable}"
+					labelFor="salesAdministrator"/>
+				<Input id="salesAdministrator"
+					value="{viewModel>salesAdministratorName}"
+					enabled="false">
+					<layoutData>
+						<l:GridData span="L7 M7 S7"/>
+					</layoutData>
+				</Input>
+				<Button 
+					type="{
+						path: 'viewModel>salesAdministratorName',
+						formatter: '.formatters.findOrChangeButtonType'
+					}"
+					icon="{
+						path: 'viewModel>salesAdministratorName',
+						formatter: '.formatters.findOrChangeButtonIcon'
+					}"
+					tooltip="Find /change"
+					enabled="{viewModel>/state/editable}" 
+					press="findSalesAdministrator"></Button>
+			</f:content>
+		</f:SimpleForm>
+	</Panel>
+	
+</core:FragmentDefinition>
