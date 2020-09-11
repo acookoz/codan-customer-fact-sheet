@@ -27,7 +27,7 @@
 					}"
 					enabled="{viewModel>/state/editable}"
 					forceSelection="false">
-					<core:Item text="{oDataModel>value}" key="{oDataModel>key}"/>
+					<core:Item text="{oDataModel>key} ({oDataModel>value})" key="{oDataModel>key}"/>
 				</Select>
 				
 				<Label id="currencyLabel" text="{i18n>lblOrderCurrency}" labelFor="currency" required="{viewModel>/state/editable}"/>
